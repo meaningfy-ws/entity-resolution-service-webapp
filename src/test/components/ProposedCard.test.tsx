@@ -5,7 +5,7 @@ import { render, screen } from '../test-utils'
 
 import type { CanonicalEntityPreview } from '../../api/types.gen'
 
-vi.mock('../../src/hooks/useDecisionsLoadingState', () => ({
+vi.mock('@hooks/useDecisionsLoadingState', () => ({
   useDecisionsLoadingState: () => false
 }))
 

@@ -3,16 +3,16 @@ import { describe, expect, it, vi } from 'vitest'
 import { UserActionsSideMenu } from '../../components/UserActionsSideMenu'
 import { createTestQueryClient, fireEvent, render, screen, waitFor } from '../test-utils'
 
-const { listUserActionsApiV1UserActionsGetInfiniteOptions } = await import('../../src/api/@tanstack/react-query.gen')
+const { listUserActionsApiV1UserActionsGetInfiniteOptions } = await import('@api/@tanstack/react-query.gen')
 
-vi.mock('../../src/api/@tanstack/react-query.gen', () => ({
+vi.mock('@api/@tanstack/react-query.gen', () => ({
   listUserActionsApiV1UserActionsGetInfiniteOptions: vi.fn(() => ({
     queryKey: ['user-actions-infinite'],
     queryFn: vi.fn().mockResolvedValue({ results: [], next_cursor: null })
   }))
 }))
 
-vi.mock('../../src/hooks/useInfiniteScroll', () => ({
+vi.mock('@hooks/useInfiniteScroll', () => ({
   useInfiniteScroll: vi.fn(() => ({ current: null }))
 }))
 

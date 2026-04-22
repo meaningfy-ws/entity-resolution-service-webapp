@@ -12,7 +12,7 @@ const mockNotification = vi.hoisted(() => ({
 }))
 const mockRemoveDecisionFromCache = vi.hoisted(() => vi.fn())
 
-vi.mock('../../src/api/@tanstack/react-query.gen', () => ({
+vi.mock('@api/@tanstack/react-query.gen', () => ({
   acceptDecisionApiV1CurationDecisionsDecisionIdAcceptPostMutation: vi.fn(() => ({
     mutationFn: vi.fn()
   })),
@@ -36,15 +36,15 @@ vi.mock('../../src/api/@tanstack/react-query.gen', () => ({
   getStatisticsApiV1CurationStatsGetQueryKey: vi.fn(() => ['stats'])
 }))
 
-vi.mock('../../src/hooks/useDecisionsLoadingState', () => ({
+vi.mock('@hooks/useDecisionsLoadingState', () => ({
   useDecisionsLoadingState: () => false
 }))
 
-vi.mock('../../src/hooks/useRemoveDecisionFromCache', () => ({
+vi.mock('@hooks/useRemoveDecisionFromCache', () => ({
   useRemoveDecisionFromCache: () => mockRemoveDecisionFromCache
 }))
 
-vi.mock('../../src/hooks/useInfiniteScroll', () => ({
+vi.mock('@hooks/useInfiniteScroll', () => ({
   useInfiniteScroll: vi.fn(() => ({ current: null }))
 }))
 
@@ -250,7 +250,7 @@ describe('ComparisonPanel', () => {
   describe('accept flow', () => {
     it('calls mutation, removes from cache, and shows success notification', async () => {
       const { acceptDecisionApiV1CurationDecisionsDecisionIdAcceptPostMutation } =
-        await import('../../src/api/@tanstack/react-query.gen')
+        await import('@api/@tanstack/react-query.gen')
 
       vi.mocked(acceptDecisionApiV1CurationDecisionsDecisionIdAcceptPostMutation).mockReturnValueOnce({
         mutationFn: vi.fn().mockResolvedValue({})
@@ -269,7 +269,7 @@ describe('ComparisonPanel', () => {
 
     it('shows error notification when accept mutation fails', async () => {
       const { acceptDecisionApiV1CurationDecisionsDecisionIdAcceptPostMutation } =
-        await import('../../src/api/@tanstack/react-query.gen')
+        await import('@api/@tanstack/react-query.gen')
 
       vi.mocked(acceptDecisionApiV1CurationDecisionsDecisionIdAcceptPostMutation).mockReturnValueOnce({
         mutationFn: vi.fn().mockRejectedValue({
@@ -291,7 +291,7 @@ describe('ComparisonPanel', () => {
   describe('reject flow', () => {
     it('calls mutation, removes from cache, and shows success notification', async () => {
       const { rejectDecisionApiV1CurationDecisionsDecisionIdRejectPostMutation } =
-        await import('../../src/api/@tanstack/react-query.gen')
+        await import('@api/@tanstack/react-query.gen')
 
       vi.mocked(rejectDecisionApiV1CurationDecisionsDecisionIdRejectPostMutation).mockReturnValueOnce({
         mutationFn: vi.fn().mockResolvedValue({})
@@ -310,7 +310,7 @@ describe('ComparisonPanel', () => {
 
     it('shows error notification when reject mutation fails', async () => {
       const { rejectDecisionApiV1CurationDecisionsDecisionIdRejectPostMutation } =
-        await import('../../src/api/@tanstack/react-query.gen')
+        await import('@api/@tanstack/react-query.gen')
 
       vi.mocked(rejectDecisionApiV1CurationDecisionsDecisionIdRejectPostMutation).mockReturnValueOnce({
         mutationFn: vi.fn().mockRejectedValue({
@@ -362,7 +362,7 @@ describe('ComparisonPanel', () => {
       sessionStorage.setItem('ere_skip_accept', 'true')
 
       const { acceptDecisionApiV1CurationDecisionsDecisionIdAcceptPostMutation } =
-        await import('../../src/api/@tanstack/react-query.gen')
+        await import('@api/@tanstack/react-query.gen')
 
       vi.mocked(acceptDecisionApiV1CurationDecisionsDecisionIdAcceptPostMutation).mockReturnValueOnce({
         mutationFn: vi.fn().mockResolvedValue({})
@@ -385,7 +385,7 @@ describe('ComparisonPanel', () => {
       sessionStorage.setItem('ere_skip_reject', 'true')
 
       const { rejectDecisionApiV1CurationDecisionsDecisionIdRejectPostMutation } =
-        await import('../../src/api/@tanstack/react-query.gen')
+        await import('@api/@tanstack/react-query.gen')
 
       vi.mocked(rejectDecisionApiV1CurationDecisionsDecisionIdRejectPostMutation).mockReturnValueOnce({
         mutationFn: vi.fn().mockResolvedValue({})
@@ -472,7 +472,7 @@ describe('ComparisonPanel', () => {
 
     it('persists accept skip on confirm when the checkbox is checked', async () => {
       const { acceptDecisionApiV1CurationDecisionsDecisionIdAcceptPostMutation } =
-        await import('../../src/api/@tanstack/react-query.gen')
+        await import('@api/@tanstack/react-query.gen')
 
       vi.mocked(acceptDecisionApiV1CurationDecisionsDecisionIdAcceptPostMutation).mockReturnValueOnce({
         mutationFn: vi.fn().mockResolvedValue({})

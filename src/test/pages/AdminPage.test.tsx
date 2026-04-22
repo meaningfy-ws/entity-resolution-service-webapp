@@ -37,7 +37,7 @@ const mockUsers: UserResponse[] = [
   }
 ]
 
-vi.mock('../../src/api/@tanstack/react-query.gen', () => ({
+vi.mock('@api/@tanstack/react-query.gen', () => ({
   listUsersApiV1UsersGetOptions: vi.fn(() => ({
     queryKey: ['users'],
     queryFn: vi.fn().mockResolvedValue({
@@ -62,14 +62,14 @@ vi.mock('../../src/api/@tanstack/react-query.gen', () => ({
   }))
 }))
 
-vi.mock('../../src/hooks/useQueryUpdate', () => ({
+vi.mock('@hooks/useQueryUpdate', () => ({
   useQueryUpdate: () => ({
     params: { page: 1, per_page: 10 },
     updateQuery: mockUpdateQuery
   })
 }))
 
-vi.mock('../../src/context/useAuth', () => ({
+vi.mock('@context/useAuth', () => ({
   useAuth: () => ({
     user: { id: 'admin', email: 'admin@example.com', is_superuser: true, is_active: true, is_verified: true },
     isLoading: false,
@@ -382,7 +382,7 @@ describe('AdminPage', () => {
       }))
 
       const { listUsersApiV1UsersGetOptions } = await import(
-        '../../src/api/@tanstack/react-query.gen'
+        '@api/@tanstack/react-query.gen'
       )
       vi.mocked(listUsersApiV1UsersGetOptions).mockReturnValueOnce({
         queryKey: ['users'],

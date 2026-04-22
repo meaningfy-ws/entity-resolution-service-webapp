@@ -15,7 +15,7 @@ const createStableClient = () => new QueryClient({
   }
 })
 
-vi.mock('../../src/api/@tanstack/react-query.gen', () => ({
+vi.mock('@api/@tanstack/react-query.gen', () => ({
   getSelectedClusterApiV1UserActionsActionIdSelectedClusterGetOptions: vi.fn(
     () => ({
       queryKey: ['selected-cluster'],
@@ -30,7 +30,7 @@ vi.mock('../../src/api/@tanstack/react-query.gen', () => ({
   )
 }))
 
-vi.mock('../../src/hooks/useDecisionsLoadingState', () => ({
+vi.mock('@hooks/useDecisionsLoadingState', () => ({
   useDecisionsLoadingState: () => false
 }))
 
@@ -223,7 +223,7 @@ describe('UserActionDetailPanel', () => {
     it('does not query selected cluster API for REJECT_ALL', async () => {
       const {
         getSelectedClusterApiV1UserActionsActionIdSelectedClusterGetOptions
-      } = await import('../../src/api/@tanstack/react-query.gen')
+      } = await import('@api/@tanstack/react-query.gen')
 
       render(
         <UserActionDetailPanel
@@ -264,7 +264,7 @@ describe('UserActionDetailPanel', () => {
 
     it('renders candidate collapse items with cluster IDs', async () => {
       const { getCandidatesApiV1UserActionsActionIdCandidatesGetInfiniteOptions } =
-        await import('../../src/api/@tanstack/react-query.gen')
+        await import('@api/@tanstack/react-query.gen')
 
       vi.mocked(
         getCandidatesApiV1UserActionsActionIdCandidatesGetInfiniteOptions
@@ -606,7 +606,7 @@ describe('UserActionDetailPanel', () => {
 
     it('invokes fetchNextPage when "Load more candidates" is clicked', async () => {
       const { getCandidatesApiV1UserActionsActionIdCandidatesGetInfiniteOptions } =
-        await import('../../src/api/@tanstack/react-query.gen')
+        await import('@api/@tanstack/react-query.gen')
 
       const candidatesQueryFn = vi.fn().mockResolvedValue({ results: [], next: null })
 

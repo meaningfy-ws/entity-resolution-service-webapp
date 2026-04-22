@@ -7,7 +7,7 @@ import { render, screen } from '../test-utils'
 
 const mockUpdateQuery = vi.hoisted(() => vi.fn())
 
-vi.mock('../../src/hooks/useQueryUpdate', () => ({
+vi.mock('@hooks/useQueryUpdate', () => ({
   useQueryUpdate: vi.fn(() => ({ params: {}, updateQuery: mockUpdateQuery }))
 }))
 

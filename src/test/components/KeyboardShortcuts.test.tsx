@@ -6,7 +6,7 @@ import { render, screen } from '../test-utils'
 import type { DecisionSummary } from '../../api/types.gen'
 
 // Mock the hook so the component renders without API/mutation setup
-vi.mock('../../src/hooks/useKeyboardShortcuts', () => ({
+vi.mock('@hooks/useKeyboardShortcuts', () => ({
   useKeyboardShortcuts: vi.fn()
 }))
 

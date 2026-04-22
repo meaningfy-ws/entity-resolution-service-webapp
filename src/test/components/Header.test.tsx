@@ -5,14 +5,14 @@ import { createTestQueryClient, fireEvent, render, screen } from '../test-utils'
 
 const mockNavigate = vi.hoisted(() => vi.fn())
 
-vi.mock('../../src/api/@tanstack/react-query.gen', () => ({
+vi.mock('@api/@tanstack/react-query.gen', () => ({
   getStatisticsApiV1CurationStatsGetOptions: vi.fn(() => ({
     queryKey: ['curation-stats'],
     queryFn: vi.fn()
   }))
 }))
 
-vi.mock('../../src/context/useAuth', () => ({
+vi.mock('@context/useAuth', () => ({
   useAuth: vi.fn(() => ({ user: null, logout: vi.fn() }))
 }))
 
@@ -25,7 +25,7 @@ vi.mock('react-router-dom', async (importOriginal) => {
   }
 })
 
-const { useAuth } = await import('../../src/context/useAuth')
+const { useAuth } = await import('@context/useAuth')
 
 describe('Header', () => {
   it('renders the main page title', () => {

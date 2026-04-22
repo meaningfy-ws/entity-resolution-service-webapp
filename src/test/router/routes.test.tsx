@@ -14,7 +14,7 @@ const mockUser = vi.hoisted(() => ({
   current: null as { id: string; email: string; is_superuser: boolean; is_active: boolean; is_verified: boolean } | null
 }))
 
-vi.mock('../../src/context/useAuth', () => ({
+vi.mock('@context/useAuth', () => ({
   useAuth: () => ({
     user: mockUser.current,
     isLoading: false,
@@ -23,7 +23,7 @@ vi.mock('../../src/context/useAuth', () => ({
   })
 }))
 
-vi.mock('../../src/api/@tanstack/react-query.gen', () => ({
+vi.mock('@api/@tanstack/react-query.gen', () => ({
   getStatisticsApiV1CurationStatsGetOptions: vi.fn(() => ({
     queryKey: ['stats'],
     queryFn: vi.fn().mockResolvedValue({
@@ -68,7 +68,7 @@ vi.mock('../../src/api/@tanstack/react-query.gen', () => ({
   }))
 }))
 
-vi.mock('../../src/hooks/useQueryUpdate', () => ({
+vi.mock('@hooks/useQueryUpdate', () => ({
   useQueryUpdate: () => ({
     params: { page: 1, per_page: 10 },
     updateQuery: vi.fn()
